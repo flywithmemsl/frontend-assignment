@@ -41,12 +41,20 @@ const task = initialState.markers.map(el => [getCoordinate(), getCoordinate()])
 class Game extends Component {
 
   static propTypes = {
-    swal: React.PropTypes.function
+    swal: React.PropTypes.func
   }
 
   constructor (props) {
     super(props)
     this.state = initialState
+  }
+
+  componentDidMount () {
+    window.addEventListener('resize', this.reset, true)
+  }
+
+  componentWillMount () {
+    window.removeEventListener('resize', this.reset)
   }
 
   snapToGrid = (x, y) => {
@@ -96,7 +104,7 @@ class Game extends Component {
       this.props.swal({
         title: 'Failed',
         type: 'error',
-        text: 'Try once more!'
+        text: 'Try again!'
       })
     }
   };

@@ -24,9 +24,9 @@ function collect (connect, monitor) {
 class Grid extends Component {
 
   static propTypes = {
-    connectDropTarget: React.PropTypes.function,
-    isOver: React.PropTypes.function,
-    getScene: React.PropTypes.function
+    connectDropTarget: React.PropTypes.func,
+    isOver: React.PropTypes.bool,
+    getScene: React.PropTypes.func
   }
 
   componentDidMount () {
